@@ -1,58 +1,250 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab5 C# ");
-AnyFunc();
+﻿//task1
+//using System;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
-{
-    Console.WriteLine(" Some function in top-level");
-}
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-User.UserClass cl2 = new();
-cl2.Name = " UserClass namespace User ";
+//// Базовий клас
+//abstract class Employee
+//{
+//    public string Name { get; set; }
+//    public int Age { get; set; }
+//    public double Salary { get; set; }
+
+//    public Employee(string name, int age, double salary)
+//    {
+//        Name = name;
+//        Age = age;
+//        Salary = salary;
+//    }
+
+//    // Поліморфний метод Show
+//    public abstract void Show();
+//}
+
+//// Робітник
+//class Worker : Employee
+//{
+//    public string WorkArea { get; set; }
+
+//    public Worker(string name, int age, double salary, string workArea)
+//        : base(name, age, salary)
+//    {
+//        WorkArea = workArea;
+//    }
+
+//    public override void Show()
+//    {
+//        Console.WriteLine($"Робітник: {Name}, Вік: {Age}, Зарплата: {Salary}, Область роботи: {WorkArea}");
+//    }
+//}
+
+//// Кадри
+//class HR : Employee
+//{
+//    public int EmployeesManaged { get; set; }
+
+//    public HR(string name, int age, double salary, int employeesManaged)
+//        : base(name, age, salary)
+//    {
+//        EmployeesManaged = employeesManaged;
+//    }
+
+//    public override void Show()
+//    {
+//        Console.WriteLine($"Кадри: {Name}, Вік: {Age}, Зарплата: {Salary}, Кількість співробітників: {EmployeesManaged}");
+//    }
+//}
+
+//// Інженер
+//class Engineer : Employee
+//{
+//    public string Specialization { get; set; }
+
+//    public Engineer(string name, int age, double salary, string specialization)
+//        : base(name, age, salary)
+//    {
+//        Specialization = specialization;
+//    }
+
+//    public override void Show()
+//    {
+//        Console.WriteLine($"Інженер: {Name}, Вік: {Age}, Зарплата: {Salary}, Спеціалізація: {Specialization}");
+//    }
+//}
+
+//// Адміністрація (використання запису для зберігання даних про адміністрацію)
+//record Administration(string Name, int Age, double Salary, string Position)
+//{
+//    public void Show() => Console.WriteLine($"Адміністрація: {Name}, Вік: {Age}, Зарплата: {Salary}, Посада: {Position}");
+//}
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Employee worker = new Worker("Іван", 35, 20000, "Будівництво");
+//        Employee hr = new HR("Марина", 40, 25000, 100);
+//        Employee engineer = new Engineer("Олексій", 30, 30000, "Програмування");
+//        Administration admin = new("Олена", 45, 50000, "Директор");
+
+//        worker.Show();
+//        hr.Show();
+//        engineer.Show();
+//        admin.Show();
+//    }
+//}
 
 
 
+//task2
+//using System;
 
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
+//// Базовий клас
+//abstract class Employee
+//{
+//    public string Name { get; set; }
+//    public int Age { get; set; }
+//    public double Salary { get; set; }
 
-namespace User
-{
-    class UserClass
-    {
-        public string Name { get; set; }
-       public  UserClass()
-        {
-            Name = "NoName";
-        }
-        UserClass(string n)
-        {
-            Name = n;
-        }
-    }
+//    public Employee()
+//    {
+//        Console.WriteLine("Викликано конструктор Employee (без параметрів)");
+//    }
 
-}
-class UserClass
-{
-    public string Name { get; set; }
-}
+//    public Employee(string name) : this()
+//    {
+//        Name = name;
+//        Console.WriteLine("Викликано конструктор Employee (з іменем)");
+//    }
+
+//    public Employee(string name, int age, double salary) : this(name)
+//    {
+//        Age = age;
+//        Salary = salary;
+//        Console.WriteLine("Викликано конструктор Employee (з усіма параметрами)");
+//    }
+
+//    ~Employee()
+//    {
+//        Console.WriteLine("Викликано деструктор Employee");
+//    }
+
+//    public abstract void Show();
+//}
+
+//// Робітник
+//class Worker : Employee
+//{
+//    public string WorkArea { get; set; }
+
+//    public Worker() : base()
+//    {
+//        Console.WriteLine("Викликано конструктор Worker (без параметрів)");
+//    }
+
+//    public Worker(string name) : base(name)
+//    {
+//        Console.WriteLine("Викликано конструктор Worker (з іменем)");
+//    }
+
+//    public Worker(string name, int age, double salary, string workArea) : base(name, age, salary)
+//    {
+//        WorkArea = workArea;
+//        Console.WriteLine("Викликано конструктор Worker (з усіма параметрами)");
+//    }
+
+//    ~Worker()
+//    {
+//        Console.WriteLine("Викликано деструктор Worker");
+//    }
+
+//    public override void Show()
+//    {
+//        Console.WriteLine($"Робітник: {Name}, Вік: {Age}, Зарплата: {Salary}, Область роботи: {WorkArea}");
+//    }
+//}
+
+//// Кадри
+//class HR : Employee
+//{
+//    public int EmployeesManaged { get; set; }
+
+//    public HR() : base()
+//    {
+//        Console.WriteLine("Викликано конструктор HR (без параметрів)");
+//    }
+
+//    public HR(string name) : base(name)
+//    {
+//        Console.WriteLine("Викликано конструктор HR (з іменем)");
+//    }
+
+//    public HR(string name, int age, double salary, int employeesManaged) : base(name, age, salary)
+//    {
+//        EmployeesManaged = employeesManaged;
+//        Console.WriteLine("Викликано конструктор HR (з усіма параметрами)");
+//    }
+
+//    ~HR()
+//    {
+//        Console.WriteLine("Викликано деструктор HR");
+//    }
+
+//    public override void Show()
+//    {
+//        Console.WriteLine($"Кадри: {Name}, Вік: {Age}, Зарплата: {Salary}, Кількість співробітників: {EmployeesManaged}");
+//    }
+//}
+
+//// Інженер
+//class Engineer : Employee
+//{
+//    public string Specialization { get; set; }
+
+//    public Engineer() : base()
+//    {
+//        Console.WriteLine("Викликано конструктор Engineer (без параметрів)");
+//    }
+
+//    public Engineer(string name) : base(name)
+//    {
+//        Console.WriteLine("Викликано конструктор Engineer (з іменем)");
+//    }
+
+//    public Engineer(string name, int age, double salary, string specialization) : base(name, age, salary)
+//    {
+//        Specialization = specialization;
+//        Console.WriteLine("Викликано конструктор Engineer (з усіма параметрами)");
+//    }
+
+//    ~Engineer()
+//    {
+//        Console.WriteLine("Викликано деструктор Engineer");
+//    }
+
+//    public override void Show()
+//    {
+//        Console.WriteLine($"Інженер: {Name}, Вік: {Age}, Зарплата: {Salary}, Спеціалізація: {Specialization}");
+//    }
+//}
+
+//// Адміністрація
+//record Administration(string Name, int Age, double Salary, string Position)
+//{
+//    public void Show() => Console.WriteLine($"Адміністрація: {Name}, Вік: {Age}, Зарплата: {Salary}, Посада: {Position}");
+//}
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Employee worker = new Worker("Іван", 35, 20000, "Будівництво");
+//        Employee hr = new HR("Марина", 40, 25000, 100);
+//        Employee engineer = new Engineer("Олексій", 30, 30000, "Програмування");
+//        Administration admin = new("Олена", 45, 50000, "Директор");
+
+//        worker.Show();
+//        hr.Show();
+//        engineer.Show();
+//        admin.Show();
+//        Console.ReadKey();
+//    }
+//}
